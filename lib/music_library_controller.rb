@@ -1,7 +1,7 @@
 class MusicLibraryController
 
-def initialize(path)
-  MusicImporter.new(path).import
+def initialize
+  MusicImporter.new.import
 end
 
 end
