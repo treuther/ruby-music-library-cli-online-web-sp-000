@@ -28,4 +28,8 @@ def list_songs
   end
 end
 
+def list_artists
+
+end
+
 end
