@@ -50,7 +50,7 @@ class Song
   end
 
   def self.new_from_filename(name)
-binding.pry
+    artist, song, genre = name.split(" - ")
   end
 
 end
