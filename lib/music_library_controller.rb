@@ -23,8 +23,8 @@ def call
 end
 
 def list_songs
-  Song.all.sort_by(&:name).each.with_index(1) do
-
+  Song.all.sort_by(&:name).each.with_index(1) do |song, idx|
+    puts "#{idx}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
   end
   binding.pry
 end
