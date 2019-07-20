@@ -5,7 +5,7 @@ def initialize(path = "./db/mp3s")
 end
 
 def call
-  "Welcome to your music library!"
+  puts "Welcome to your music library!"
 end
 
 end
