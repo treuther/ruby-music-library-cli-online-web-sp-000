@@ -1,4 +1,8 @@
+require_relative '../lib/concerns/findable.rb'
+
 class Artist
+
+  extend Concerns::Findable
 
   attr_accessor :name
   attr_reader :songs
