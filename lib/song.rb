@@ -53,7 +53,7 @@ class Song
     artist, song, genre_name = name.split(" - ")
     fixed_name = genre_name.gsub(".mp3", "")
     artist = Artist.find_or_create_by_name(artist)
-    artist = Genre.find_or_create_by_name(fixed_name)
+    genre = Genre.find_or_create_by_name(fixed_name)
     new(song, artist, genre)
   end
 
