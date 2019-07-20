@@ -19,7 +19,7 @@ class Artist
   end
 
   def save
-    @@all << self
+    self.class.all << self
   end
 
   def self.create(name)
@@ -30,7 +30,12 @@ class Artist
 
   def add_song(song)
     song.artist = self unless song.artist
-    @songs << song unless @songs.include?(song)
+    songs.push song unless songs.include?(song)
+  end
+
+  def genres
+    songs.map(&:genre).uniq  #You are "tapping" into the songs'
+    #map and then return the array of songs
   end
 
 end

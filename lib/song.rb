@@ -1,17 +1,25 @@
+require 'pry'
 class Song
   attr_accessor :name
-  attr_reader :artist
+  attr_reader :artist, :genre
 
   @@all = []
 
-  def initialize(name, artist = nil)
+  def initialize(name, artist = nil, genre = nil)
     @name = name
-    @artist = artist
+    self.artist = artist if artist #This invokes artist, instead of
+    #just assigning artist to an instance variable.
+    self.genre = genre if genre
   end
 
   def artist=(artist)
     @artist = artist
     artist.add_song(self)
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.songs.push self unless genre.songs.include? self
   end
 
   def self.all
@@ -23,7 +31,17 @@ class Song
   end
 
   def save
-    @@all << self
+    self.class.all << self
+  end
+
+  def self.find_by_name(name)
+    # binding.pry
+     all.find {|song| song.name}
+    all.find{|song| song.name == name}
+  end
+
+  def self.find_or_create_by_name(name)
+    find_by_name(name) || create(name)
   end
 
   def self.create(name)

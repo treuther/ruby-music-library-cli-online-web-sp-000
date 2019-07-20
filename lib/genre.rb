@@ -1,10 +1,12 @@
 class Genre
   attr_accessor :name
+  attr_reader :songs
 
   @@all = []
 
   def initialize(name)
     @name = name
+    @songs = []
   end
 
   def self.all
@@ -16,13 +18,18 @@ class Genre
   end
 
   def save
-    @@all << self
+    self.class.all << self
   end
 
   def self.create(name)
     genre = new(name)
     genre.save
     genre
+  end
+
+  def artists
+    songs.map(&:artist).uniq  #You are "tapping" into the songs'
+    #map and then return the array of songs
   end
 
 end
