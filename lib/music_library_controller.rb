@@ -29,7 +29,8 @@ def list_songs
 end
 
 def list_artists
-
+  Artist.all.sort_by(&:name).each.with_index(1) do |art, idx|
+    puts "#{idx}. #{song.art.name}"
 end
 
 end
