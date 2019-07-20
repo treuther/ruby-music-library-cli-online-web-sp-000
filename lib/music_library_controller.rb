@@ -21,4 +21,8 @@ def call
   end
 end
 
+def list_songs
+
+end
+
 end
