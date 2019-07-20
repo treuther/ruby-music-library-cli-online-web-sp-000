@@ -1,5 +1,6 @@
 require 'pry'
 class Song
+
   attr_accessor :name
   attr_reader :artist, :genre
 
@@ -35,8 +36,6 @@ class Song
   end
 
   def self.find_by_name(name)
-    # binding.pry
-     all.find {|song| song.name}
     all.find{|song| song.name == name}
   end
 
@@ -48,6 +47,18 @@ class Song
     song = new(name)
     song.save
     song
+  end
+
+  def self.new_from_filename(name)
+    artist, song, genre_name = name.split(" - ")
+    fixed_name = genre_name.gsub(".mp3", "")
+    artist = Artist.find_or_create_by_name(artist)
+    genre = Genre.find_or_create_by_name(fixed_name)
+    new(song, artist, genre)
+  end
+
+  def self.create_from_filename(name)
+    new_from_filename(name).save
   end
 
 end
