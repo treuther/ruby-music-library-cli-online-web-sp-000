@@ -23,7 +23,9 @@ def call
 end
 
 def list_songs
-  Song.all.sort{|a, b| a.name <=> b.name}
+  Song.all.sort_by(&:name).each.with_index(1) do
+    
+  end
   binding.pry
 end
 
