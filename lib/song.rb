@@ -53,6 +53,7 @@ class Song
     artist, song, genre = name.split(" - ")
     artist = Artist.find_or_create_by_name(artist)
     artist = Genre.find_or_create_by_name(genre)
+    new(song, artist, genre)
   end
 
 end
